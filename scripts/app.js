@@ -15,9 +15,20 @@ function renderTodos() {
         deleteButton.textContent = 'Delete';
         const completedButton = document.createElement('button');
         completedButton.classList.add('completed-button')
-        completedButton.textContent = 'Completed'; 
+        completedButton.textContent = 'Complete'; 
         deleteButton.onclick = () => deleteTodo(index);
-        completedButton.onclick = () => {li.style.textDecorationLine = 'line-through'};
+        let toggle = true;
+        completedButton.onclick = () => {li.classList.toggle('cut')
+            completedButton.classList.toggle("uncomplete")
+            if (toggle){
+                completedButton.textContent = "Completed"
+                toggle = false
+            }
+            else{
+                completedButton.textContent = "Complete"
+                toggle = true
+            }
+        };
         document.querySelector("#todos").append(li)
         
         li.appendChild(buttonDiv)  
